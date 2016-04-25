@@ -2,21 +2,25 @@
 
 namespace EveIndyBoss.ViewModels
 {
-    public class ShellViewModel : ReactiveObject, IRoutableViewModel, IShellViewModel
-    {
-        public ShellViewModel(IScreen screen)
-        {
-            HostScreen = screen;
-            //HostScreen.Router.Navigate.Execute(LoginViewModel);
-        }
-
-        public string UrlPathSegment => "Shell";
-
-        public IScreen HostScreen { get; protected set; }
-    }
-
-    public interface IShellViewModel
+    public interface IShellViewModel : IRoutableViewModel
     {
         IScreen HostScreen { get; }
+        IMenuViewModel MenuVm { get; set; }
+    }
+
+    public class ShellViewModel : ReactiveObject, IShellViewModel
+    {
+        public ShellViewModel(IScreen screen, IMenuViewModel menuVm, ITestViewModel testVm)
+        {
+            HostScreen = screen;
+            MenuVm = menuVm;
+            TestVm = testVm;
+            HostScreen.Router.Navigate.Execute(TestVm);
+        }
+
+        public IMenuViewModel MenuVm { get; set; }
+        public ITestViewModel TestVm { get; set; }
+        public string UrlPathSegment => "Shell";
+        public IScreen HostScreen { get; protected set; }
     }
 }

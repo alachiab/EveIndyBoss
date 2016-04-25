@@ -4,14 +4,14 @@
              xmlns:reactiveUi="clr-namespace:ReactiveUI;assembly=ReactiveUI"
              Title="ShellView">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
             <reactiveUi:ViewModelViewHost x:Name="Menu" />
         </StackPanel>
-        <reactiveUi:RoutedViewHost x:Name="ContentView" Grid.Column="1" Width="Auto">
+        <reactiveUi:RoutedViewHost x:Name="ContentView" Grid.Row="1" Width="Auto">
             <reactiveUi:RoutedViewHost.DefaultContent>
                 <Border Background="Gainsboro">
                     <TextBlock Text="No view loaded." />

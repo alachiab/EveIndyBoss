@@ -15,6 +15,7 @@ namespace EveIndyBoss.Views
             InitializeComponent();
             ViewModel = viewModel;
             this.Bind(ViewModel, vm => vm.HostScreen.Router, v => v.ContentView.Router);
+            this.OneWayBind(ViewModel, vm => vm.MenuVm, v => v.Menu.ViewModel);
         }
 
         object IViewFor.ViewModel
