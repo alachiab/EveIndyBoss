@@ -1,3 +1,5 @@
+staticdata.db*
+
 # CSS/JS
 *.min.js
 *.min.css

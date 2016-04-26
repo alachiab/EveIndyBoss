@@ -1,4 +1,7 @@
-﻿using eZet.EveLib.EveCentralModule;
+﻿using System;
+using System.Data;
+using System.Data.SQLite;
+using eZet.EveLib.EveCentralModule;
 using EveIndyBoss.Services;
 using EveIndyBoss.ViewModels;
 using EveIndyBoss.Views;
@@ -22,6 +25,12 @@ namespace EveIndyBoss.Infrastructure
             Bind<ICacheThings>().To<InMemoryCache>().InSingletonScope();
             Bind<IFetchMarketData>().To<EveCentralPriceService>();
             Bind<IHavePrices>().To<PriceService>();
+            Bind<IProvideStaticData>().To<StaticDataService>().InSingletonScope();
+
+            Bind<Func<IDbConnection>>()
+                .ToMethod(context => 
+                    () => new SQLiteConnection($"Data Source={Environment.CurrentDirectory}\\staticdata.db")
+                );
 
             Bind<EveCentral>().ToSelf();
         }

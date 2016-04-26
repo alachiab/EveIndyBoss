@@ -12,7 +12,7 @@ namespace EveIndyBoss.ViewModels
         {
         }
 
+        public IScreen HostScreen { get; protected set; }
         public string UrlPathSegment => "Menu";
-        public IScreen HostScreen { get; }
     }
 }

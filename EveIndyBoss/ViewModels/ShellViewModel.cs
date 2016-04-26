@@ -18,9 +18,9 @@ namespace EveIndyBoss.ViewModels
             HostScreen.Router.Navigate.Execute(TestVm);
         }
 
-        public IMenuViewModel MenuVm { get; set; }
         public ITestViewModel TestVm { get; set; }
         public string UrlPathSegment => "Shell";
         public IScreen HostScreen { get; protected set; }
+        public IMenuViewModel MenuVm { get; set; }
     }
 }

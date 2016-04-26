@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EveIndyBoss.Services;
 using ReactiveUI;
 
 namespace EveIndyBoss.ViewModels
@@ -14,12 +10,16 @@ namespace EveIndyBoss.ViewModels
 
     public class TestViewModel : ReactiveObject, ITestViewModel
     {
-        public string UrlPathSegment => "Test";
-        public IScreen HostScreen { get; protected set; }
+        private readonly IProvideStaticData _staticData;
 
-        public TestViewModel(IScreen screen)
+        public TestViewModel(IScreen screen, IProvideStaticData staticData)
         {
             HostScreen = screen;
+            _staticData = staticData;
+            var a = _staticData.Test().Result;
         }
+
+        public string UrlPathSegment => "Test";
+        public IScreen HostScreen { get; protected set; }
     }
 }

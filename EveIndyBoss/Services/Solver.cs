@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace EveIndyBoss.Services
 {
-    class Solver
+    public interface ISolveResource
+    {
+    }
+
+    public class Solver : ISolveResource
     {
     }
 }

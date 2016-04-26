@@ -58,7 +58,7 @@ namespace EveIndyBoss.Infrastructure
                         attemptToResolveView(viewType.MakeGenericType(routableViewModelInterface), contract))
                 .FirstOrDefault(x => x != null);
             if (ret != null) return ret;
-
+            
             // IViewFor<FooBarViewModel> (the original behavior in RxUI 3.1)
             return attemptToResolveView(viewType.MakeGenericType(viewModel.GetType()), contract);
         }
