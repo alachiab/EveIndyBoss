@@ -24,7 +24,7 @@ namespace EveIndyBoss.Converters
             try
             {
                 var tmp = Math.Ceiling((decimal)from);
-                var asInt = Convert.ToInt32(tmp);
+                var asInt = Convert.ToInt64(tmp);
 
                 result = string.Format(CultureInfo.InvariantCulture, "{0:0,0} ISK", asInt);
             }

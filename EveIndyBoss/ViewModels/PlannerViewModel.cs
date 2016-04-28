@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Conditions;
 using EveIndyBoss.Models;
 using EveIndyBoss.Models.StaticData;
@@ -44,31 +43,67 @@ namespace EveIndyBoss.ViewModels
             _staticData = staticData;
             _materials = materials;
 
-            var canExecuteLoadBlueprints = this.WhenAny(vm => vm.SelectedBlueprintGroup, change => change.Value != null);
-            LoadBlueprints = ReactiveCommand.CreateAsyncTask(canExecuteLoadBlueprints,
-                _ => _staticData.GetBlueprintsAsync(SelectedBlueprintGroup.GroupId), RxApp.MainThreadScheduler);
-            LoadBlueprints.ToProperty(this, x => x.Blueprints, out _blueprints, new List<Blueprint>(),
+            var canExecuteLoadBlueprints = this.WhenAny(
+                vm => vm.SelectedBlueprintGroup,
+                change => change.Value != null);
+
+            LoadBlueprints = ReactiveCommand.CreateAsyncTask(
+                canExecuteLoadBlueprints,
+                _ => _staticData.GetBlueprintsAsync(SelectedBlueprintGroup.GroupId),
                 RxApp.MainThreadScheduler);
+
+            LoadBlueprints.ToProperty(
+                this,
+                x => x.Blueprints,
+                out _blueprints,
+                new List<Blueprint>(),
+                RxApp.MainThreadScheduler);
+
             LoadBlueprints.ThrownExceptions.Subscribe(te => { this.Log().Error(te); });
 
-            LoadBlueprintGroups = ReactiveCommand.CreateAsyncTask(_ => _staticData.GetBlueprintGroupsAsync());
-            LoadBlueprintGroups.ToProperty(this, x => x.BlueprintGroups, out _blueprintGroups,
-                new List<BlueprintGroup>(), RxApp.MainThreadScheduler);
+            LoadBlueprintGroups = ReactiveCommand.CreateAsyncTask(
+                _ => _staticData.GetBlueprintGroupsAsync());
+
+            LoadBlueprintGroups.ToProperty(
+                this,
+                x => x.BlueprintGroups,
+                out _blueprintGroups,
+                new List<BlueprintGroup>(),
+                RxApp.MainThreadScheduler);
+
             LoadBlueprintGroups.ThrownExceptions.Subscribe(te => { this.Log().Error(te); });
 
-            var canExecuteGenerateBaseMatList = this.WhenAny(vm => vm.SelectedBlueprint, change => change.Value != null);
-            GenerateBaseMaterialList = ReactiveCommand.CreateAsyncTask(canExecuteGenerateBaseMatList,
-                _ => _materials.GetCalculationBase(SelectedBlueprint), RxApp.MainThreadScheduler);
-            GenerateBaseMaterialList.ToProperty(this, x => x.MaterialsBase, out _materialsBase,
+            var canExecuteGenerateBaseMatList = this.WhenAny(
+                vm => vm.SelectedBlueprint,
+                change => change.Value != null);
+
+            GenerateBaseMaterialList = ReactiveCommand.CreateAsyncTask(
+                canExecuteGenerateBaseMatList,
+                _ => _materials.GetCalculationBase(SelectedBlueprint),
+                RxApp.MainThreadScheduler);
+
+            GenerateBaseMaterialList.ToProperty(
+                this,
+                x => x.MaterialsBase,
+                out _materialsBase,
                 new List<MaterialForProduction>());
+
             GenerateBaseMaterialList.ThrownExceptions.Subscribe(te => { this.Log().Error(te); });
 
-            var a = this.WhenAnyValue(x => x.MaterialsBase, x => x.SelectedEfficiencyLevel, x => x.SelectedQuantity,
-                CalculateMats);
-            a.ToProperty(this, x => x.Materials, out _materialList);
+            this.WhenAnyValue(
+                x => x.MaterialsBase,
+                x => x.SelectedEfficiencyLevel,
+                x => x.SelectedQuantity,
+                CalculateMats)
+                .ToProperty(this, x => x.Materials, out _materialList);
 
-            var b = this.WhenAnyValue(x => x.Materials, x => CalculateStuff(x, SelectedBlueprint, SelectedQuantity));
-            b.ToProperty(this, x => x.ProductInfo, out _productInfo);
+            //calcMats.ToProperty(this, x => x.Materials, out _materialList);
+
+            var calcOverall = this.WhenAnyValue(
+                x => x.Materials,
+                x => CalculateOverall(x, SelectedBlueprint, SelectedQuantity));
+
+            calcOverall.ToProperty(this, x => x.ProductInfo, out _productInfo);
 
             Condition.Ensures(_staticData).IsNotNull();
 
@@ -115,9 +150,10 @@ namespace EveIndyBoss.ViewModels
         public IEnumerable<BlueprintGroup> BlueprintGroups => _blueprintGroups.Value;
         public IEnumerable<MaterialForProduction> Materials => _materialList.Value;
 
-        private ProductInfo CalculateStuff(IEnumerable<MaterialForProduction> mats, Blueprint selectedBlueprint, int quantity)
+        private ProductInfo CalculateOverall(IEnumerable<MaterialForProduction> mats, Blueprint selectedBlueprint,
+            int quantity)
         {
-            if(mats == null || selectedBlueprint == null || selectedBlueprint.OutputTypeId == 0 || quantity == 0)
+            if (mats == null || selectedBlueprint == null || selectedBlueprint.OutputTypeId == 0 || quantity == 0)
                 return new ProductInfo();
 
             return _materials.CalculateStuff(mats.ToList(), selectedBlueprint.OutputTypeId, quantity);
