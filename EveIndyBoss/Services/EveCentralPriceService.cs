@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using eZet.EveLib.EveCentralModule;
 using eZet.EveLib.EveCentralModule.Models;
+using eZet.EveLib.EveMarketDataModule;
+using eZet.EveLib.EveMarketDataModule.Models;
 
 namespace EveIndyBoss.Services
 {
@@ -23,11 +25,12 @@ namespace EveIndyBoss.Services
         {
             var options = new EveCentralOptions
             {
-                Items = new List<int> {typeId},
-                System = solarSystem
+                Items = new List<int> { typeId },
+                System = solarSystem,
+                HourLimit = 24
             };
 
-            var results = await _eveCentral.GetQuicklookAsync(options);
+            var results = _eveCentral.GetQuicklook(options);
 
             return results.Result;
         }

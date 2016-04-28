@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Conditions, Version=2.0.1.19, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Conditions.2.0.1\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10\Conditions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.0-beta9\lib\net451\Dapper.dll</HintPath>
       <Private>True</Private>
@@ -49,24 +53,72 @@
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EveLib.Core, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\eZet.EveLib.Core.3.0.0\lib\net45\EveLib.Core.dll</HintPath>
+    <Reference Include="EveLib, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.3.0.0.0\lib\net45\EveLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EveLib.Core, Version=3.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.Core.3.0.6.0\lib\net45\EveLib.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EveLib.Element43, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.Element43.3.0.0\lib\net45\EveLib.Element43.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EveLib.EveAuth, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.EveAuth.3.0.1.0\lib\net45\EveLib.EveAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EveLib.EveCentral, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\eZet.EveLib.EveCentral.3.0.0\lib\net45\EveLib.EveCentral.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EveLib.EveCrest, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.EveCrest.3.4.0.0\lib\net45\EveLib.EveCrest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EveLib.EveMarketData, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.EveMarketData.3.0.0\lib\net45\EveLib.EveMarketData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EveLib.EveWho, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.EveWho.3.1.0.0\lib\net45\EveLib.EveWho.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EveLib.EveXml, Version=3.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.EveXml.3.0.7.0\lib\net45\EveLib.EveXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EveLib.StaticData, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.StaticData.3.0.0\lib\net45\EveLib.StaticData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EveLib.ZKillboard, Version=3.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\eZet.EveLib.ZKillboard.3.0.3\lib\net45\EveLib.ZKillboard.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Solver.Foundation, Version=3.0.2.10889, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Microsoft.Solver.Foundation.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ReactiveUI, Version=6.5.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -133,20 +185,30 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Converters\IskConverter.cs" />
     <Compile Include="Infrastructure\Constants.cs" />
     <Compile Include="Infrastructure\DbConnectionExtensions.cs" />
     <Compile Include="Infrastructure\EveIndyModule.cs" />
     <Compile Include="Infrastructure\MyViewLocator.cs" />
     <Compile Include="Infrastructure\NinjectResolver.cs" />
+    <Compile Include="Infrastructure\QuickLookResultExtensions.cs" />
     <Compile Include="Models\CacheItem.cs" />
+    <Compile Include="Models\StaticData\ItemLine.cs" />
+    <Compile Include="Models\MaterialForProduction.cs" />
+    <Compile Include="Models\ProductInfo.cs" />
+    <Compile Include="Models\StaticData\BlueprintGroup.cs" />
+    <Compile Include="Models\StaticData\MaterialsForType.cs" />
     <Compile Include="Services\InMemoryCache.cs" />
     <Compile Include="Services\EveCentralPriceService.cs" />
+    <Compile Include="Services\MaterialCalculator.cs" />
     <Compile Include="Services\PriceService.cs" />
     <Compile Include="Services\Solver.cs" />
-    <Compile Include="Services\StaticDataService.cs" />
+    <Compile Include="Models\StaticData\Blueprint.cs" />
+    <Compile Include="Services\StaticData\StaticDataService.cs" />
+    <Compile Include="Services\StaticData\StaticDataSql.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\TestViewModel.cs" />
+    <Compile Include="ViewModels\PlannerViewModel.cs" />
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -157,8 +219,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\TestView.xaml.cs">
-      <DependentUpon>TestView.xaml</DependentUpon>
+    <Compile Include="Views\PlannerView.xaml.cs">
+      <DependentUpon>PlannerView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
@@ -168,7 +230,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TestView.xaml">
+    <Page Include="Views\PlannerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,9 +266,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\StaticData\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.101.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net451\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

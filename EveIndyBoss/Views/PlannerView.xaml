@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="EveIndyBoss.Views.PlannerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EveIndyBoss.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Blueprint group" />
+            <ComboBox x:Name="BlueprintGroups">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding GroupName}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Blueprint" />
+            <ComboBox x:Name="Blueprints">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Material Efficiency" />
+                <TextBlock Grid.Column="1" x:Name="EfficiencyIndicator" TextAlignment="Right"/>
+            </Grid>
+            <Slider x:Name="Efficiency" Minimum="0" Maximum="10" IsSnapToTickEnabled="True" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Quantity" />
+                <TextBlock Grid.Column="1" x:Name="QuantityIndicator" TextAlignment="Right"/>
+            </Grid>
+            <Slider x:Name="Quantity" Minimum="1" Maximum="0" IsSnapToTickEnabled="True" />
+            <Separator />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Jita Sell" />
+                <TextBlock Grid.Column="1" x:Name="JitaSell" TextAlignment="Right"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Shipping from Jita" />
+                <TextBlock Grid.Column="1" x:Name="ShipFromJita" TextAlignment="Right"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="O1Y-ED Sell" />
+                <TextBlock Grid.Column="1" x:Name="StagingSell" TextAlignment="Right"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Total Cost" />
+                <TextBlock Grid.Column="1" x:Name="TotalCost" TextAlignment="Right"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Total Cost per Item" />
+                <TextBlock Grid.Column="1" x:Name="TotalCostPerItem" TextAlignment="Right"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Sell 10% Profit" />
+                <TextBlock Grid.Column="1" x:Name="ProfitSell" TextAlignment="Right" />
+            </Grid>
+        </StackPanel>
+        
+        <DataGrid Grid.Column="1" x:Name="ResourceList" AutoGenerateColumns="False" AlternatingRowBackground="#FF999999" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Per Item Cost" Binding="{Binding Cost}"/>
+                <DataGridTextColumn Header="Per Item Volume" Binding="{Binding Volume}"/>
+                <DataGridTextColumn Header="Cost All Items" Binding="{Binding CostTotal}"/>
+                <DataGridTextColumn Header="Volume All Items" Binding="{Binding VolumeAll}"/>
+                <DataGridTextColumn Header="Shipping Cost" Binding="{Binding Shipping}"/>
+                <DataGridTextColumn Header="Collateral Cost" Binding="{Binding Collateral}"/>
+                <DataGridTextColumn Header="Total Cost" Binding="{Binding CostAll}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
